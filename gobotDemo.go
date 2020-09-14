@@ -17,12 +17,12 @@ func main() {
 		gobot.Every(1000*time.Millisecond, func() {
 
 			// Move the wheels
-			err := gopigo3.SetMotorDps(g.MOTOR_LEFT, 20)
+			err := gopigo3.SetMotorDps(g.MOTOR_LEFT, -150)
 			if err != nil {
 				fmt.Println(err)
 			}
 
-			err1 := gopigo3.SetMotorDps(g.MOTOR_RIGHT, 20)
+			err1 := gopigo3.SetMotorDps(g.MOTOR_RIGHT, -150)
 			if err1 != nil {
 				fmt.Println(err)
 			}
