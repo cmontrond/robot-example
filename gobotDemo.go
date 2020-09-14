@@ -13,18 +13,33 @@ func main() {
 	gopigo3 := g.NewDriver(raspiAdaptor)
 
 	work := func() {
-		on := uint8(0xFF)
-		gobot.Every(500*time.Millisecond, func() {
-			err := gopigo3.SetLED(g.LED_EYE_RIGHT, 0x00, 0x00, on)
+		//on := uint8(0xFF)
+		gobot.Every(1000*time.Millisecond, func() {
+
+			// Move the wheels
+			err := gopigo3.SetMotorDps(g.MOTOR_LEFT, 20)
 			if err != nil {
 				fmt.Println(err)
 			}
-			err = gopigo3.SetLED(g.LED_EYE_LEFT, ^on, 0x00, 0x00)
-			if err != nil {
+
+			err1 := gopigo3.SetMotorDps(g.MOTOR_RIGHT, 20)
+			if err1 != nil {
 				fmt.Println(err)
 			}
-			on = ^on
+
+			// Blink LEDs
+			//err2:= gopigo3.SetLED(g.LED_EYE_RIGHT, 0x00, 0x00, on)
+			//if err2 != nil {
+			//	fmt.Println(err)
+			//}
+			//
+			//err3 := gopigo3.SetLED(g.LED_EYE_LEFT, ^on, 0x00, 0x00)
+			//if err3 != nil {
+			//	fmt.Println(err)
+			//}
+			//on = ^on
 		})
+
 	}
 
 	robot := gobot.NewRobot("gopigo3",
