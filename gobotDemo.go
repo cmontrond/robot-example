@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"gobot.io/x/gobot"
 	g "gobot.io/x/gobot/platforms/dexter/gopigo3"
 	"gobot.io/x/gobot/platforms/raspi"
@@ -16,16 +15,11 @@ func main() {
 		//on := uint8(0xFF)
 		gobot.Every(1000*time.Millisecond, func() {
 
-			// Move the wheels
-			err := gopigo3.SetMotorDps(g.MOTOR_LEFT, -150)
-			if err != nil {
-				fmt.Println(err)
-			}
+			_ = gopigo3.SetMotorPosition(g.MOTOR_RIGHT, 180)
 
-			err1 := gopigo3.SetMotorDps(g.MOTOR_RIGHT, -150)
-			if err1 != nil {
-				fmt.Println(err)
-			}
+			// Move the wheels
+			_ = gopigo3.SetMotorDps(g.MOTOR_LEFT, -150)
+			_ = gopigo3.SetMotorDps(g.MOTOR_RIGHT, -150)
 
 			// Blink LEDs
 			//err2:= gopigo3.SetLED(g.LED_EYE_RIGHT, 0x00, 0x00, on)
