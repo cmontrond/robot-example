@@ -1,4 +1,4 @@
-package robot_example
+package main
 
 import (
 	"fmt"
