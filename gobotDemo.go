@@ -14,7 +14,7 @@ func main() {
 
 	work := func() {
 		on := uint8(0xFF)
-		gobot.Every(1000*time.Millisecond, func() {
+		gobot.Every(500*time.Millisecond, func() {
 			err := gopigo3.SetLED(g.LED_EYE_RIGHT, 0x00, 0x00, on)
 			if err != nil {
 				fmt.Println(err)
